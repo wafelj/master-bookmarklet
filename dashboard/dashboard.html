@@ -1,0 +1,31 @@
+<head>
+  <title>dashboard</title>
+</head>
+
+<body>
+  {{> hello}}
+  {{> add}}
+  {{> bookmarklets}}
+</body>
+
+<template name="hello">
+  <h1>Hello World!</h1>
+  {{greeting}}
+</template>
+
+<template name="add">
+  <input type="text" id="bookmarklet-name" placeholder="Enter name" />
+  <textarea rows="10" id="bookmarklet-code" placeholder="Add bookmarklet code"></textarea>
+  <input type="button" class="add-bookmarklet" value="Submit" />
+</template>
+
+<template name="bookmarklets">
+  <h2>Existing bookmarklets</h2>
+  {{#each items}}
+    {{> bookmarklet}}
+  {{/each}}
+</template>
+
+<template name="bookmarklet">
+  <span>Name: {{name}}</span>
+</template>
