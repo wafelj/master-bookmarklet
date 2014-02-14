@@ -1,5 +1,7 @@
 {
   "packages": {
-    "collection-api": {}
+  	"collection-api-jsonp": {
+  		"path": "../local-packages/collection-api-jsonp"
+  	}
   }
 }
