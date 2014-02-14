@@ -1,31 +1,74 @@
 <head>
-  <title>dashboard</title>
+  <title>Master Bookmarklet Dashboard</title>
 </head>
 
 <body>
-  {{> hello}}
-  {{> add}}
-  {{> bookmarklets}}
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">Master Bookmarklet</a>
+        <ul class="nav pull-right">
+          <li>
+            {{loginButtons}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="main">
+    {{#if currentUser}}
+      {{> bookmarklets}}
+      {{> add}}
+    {{/if}}
+    {{#unless currentUser}}
+      {{> login}}
+    {{/unless}}
+  </div>
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-</template>
 
-<template name="add">
-  <input type="text" id="bookmarklet-name" placeholder="Enter name" />
-  <textarea rows="10" id="bookmarklet-code" placeholder="Add bookmarklet code"></textarea>
-  <input type="button" class="add-bookmarklet" value="Submit" />
+<template name="login">
+  <div class="well">
+    <h4>Sign in using Twitter to manage your bookmarklets.</h4>
+    {{loginButtons}}
+    </div>
+  </div>
 </template>
 
 <template name="bookmarklets">
-  <h2>Existing bookmarklets</h2>
-  {{#each items}}
-    {{> bookmarklet}}
-  {{/each}}
+  <div class="well">
+    <h4>Your bookmarklets</h4>
+    <ul class="media-list">
+    {{#if empty}}
+      <p>None added yet.</p>
+    {{/if}}
+    {{#each items}}
+      {{> bookmarklet}}
+    {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="bookmarklet">
-  <span>Name: {{name}}</span>
+  <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="{{thumbnailUrl}}" alt="">
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading">{{name}}</h5>
+    </div>
+  </li>
+</template>
+
+<template name="add">
+  <div class="well">
+    <h4>Add New</h4>
+    <form>
+      <input type="text" id="bookmarklet-name" class="form-element" placeholder="Enter name" /><br/>
+      <input type="text" id="bookmarklet-thumbnail-url" class="form-element" placeholder="Enter Thumbnail URL" /><br/>
+      <textarea rows="10" id="bookmarklet-code" class="form-element" placeholder="Add bookmarklet code"></textarea><br/>
+      <input type="button" class="btn btn-default add-bookmarklet" value="Submit" />
+    </form>
+  </div>
 </template>

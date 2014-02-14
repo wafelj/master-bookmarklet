@@ -1,1 +1,21 @@
 /* CSS declarations go here */
+#login-buttons {
+  padding: 7px 0;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+form {
+  padding: 15px 15px 0 0;
+}
+
+form > * {
+  width: 100%;
+}
+
+.media .pull-left img {
+  height: 50px;
+  width: auto;
+}

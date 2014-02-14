@@ -8,3 +8,6 @@ autopublish
 insecure
 preserve-inputs
 collection-api-jsonp
+accounts-ui
+accounts-twitter
+bootstrap
