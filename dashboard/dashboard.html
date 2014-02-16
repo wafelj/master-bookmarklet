@@ -3,28 +3,36 @@
 </head>
 
 <body>
-  <div class="navbar navbar-static-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="/">Master Bookmarklet</a>
-        <ul class="nav pull-right">
-          <li>
-            {{loginButtons}}
-          </li>
-        </ul>
+  <nav class="navbar navbar-static-top navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Master Bookmarklet</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-btn navbar-right">
+          {{loginButtons}}
+        </div>
       </div>
     </div>
-  </div>
+  </nav>
 
   <div class="container" id="main">
     {{#if currentUser}}
       {{> bookmarklets}}
-      {{> add}}
     {{/if}}
     {{#unless currentUser}}
       {{> login}}
     {{/unless}}
-  </div>
+  </div> 
+  {{> dialog}}
 </body>
 
 
@@ -37,38 +45,53 @@
 </template>
 
 <template name="bookmarklets">
-  <div class="well">
-    <h4>Your bookmarklets</h4>
-    <ul class="media-list">
-    {{#if empty}}
-      <p>None added yet.</p>
-    {{/if}}
+  <div class="list-group">
     {{#each items}}
       {{> bookmarklet}}
     {{/each}}
-    </ul>
+    <a class="list-group-item add">
+      +
+    </a>
   </div>
 </template>
 
 <template name="bookmarklet">
-  <li class="media">
-    <a class="pull-left" href="#">
-      <img class="media-object" src="{{thumbnailUrl}}" alt="">
-    </a>
-    <div class="media-body">
-      <h5 class="media-heading">{{name}}</h5>
+  <a class="list-group-item">
+    <div class="media">
+      <div class="form-control media-object pull-left" style="background-image: url({{thumbnailUrl}});"></div>
+      <div class="media-body">
+        <h4 class="list-group-item-heading">{{name}}</h4>
+        <p class="list-group-item-text">{{description}}</p>
+      </div>
     </div>
-  </li>
+  </a>
 </template>
 
-<template name="add">
-  <div class="well">
-    <h4>Add New</h4>
-    <form>
-      <input type="text" id="bookmarklet-name" class="form-element" placeholder="Enter name" /><br/>
-      <input type="text" id="bookmarklet-thumbnail-url" class="form-element" placeholder="Enter Thumbnail URL" /><br/>
-      <textarea rows="10" id="bookmarklet-code" class="form-element" placeholder="Add bookmarklet code"></textarea><br/>
-      <input type="button" class="btn btn-default add-bookmarklet" value="Submit" />
-    </form>
+<template name="dialog">
+  <div class="modal fade" id="dialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="dialog-form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{#if item._id}}Edit{{else}}Add{{/if}}</h4>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id" value="{{item._id}}" />
+            <input type="text" name="name" class="form-control input-lg" placeholder="Enter name" value="{{item.name}}" required /><br/>
+            <input type="text" name="description" class="form-control" placeholder="Enter description" value="{{item.description}}" /><br/>
+            <input type="text" name="thumbnailUrl" class="form-control" placeholder="Enter Thumbnail URL" value="{{item.thumbnailUrl}}" /><br/>
+            <textarea rows="10" name="code" class="form-control" placeholder="Add bookmarklet code" required>{{item.code}}</textarea>
+          </div>
+          <div class="modal-footer">
+            {{#if item._id}}
+              <button type="button" id="dialog-delete" class="btn btn-danger pull-left">Delete</button>
+            {{/if}}
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" id="dialog-save" class="btn btn-primary">Save and close</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
