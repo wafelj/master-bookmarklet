@@ -1,7 +1,7 @@
 {
   "packages": {
     "collection-api-jsonp": {
-      "path": "../local-packages/collection-api-jsonp"
+      "path": "../custom-packages/collection-api-jsonp"
     },
     "bootstrap-3": {}
   }
