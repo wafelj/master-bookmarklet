@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="style.css">
+
+<div id="mb-header">
+  <span id="mb-header-title">Master Bookmarklet</span>
+  <a href="#" id="mb-close">Close</a>
+</div>
+<div id="mb-content">
+{{#each items}}
+  <div class="mb-item" data-id="{{_id}}" style="background-image: url({{thumbnailUrl}});">
+    <div class="mb-item-overlay">
+      <div class="mb-item-name">{{name}}</div>
+    </div>
+  </div>
+{{/each}}
+</div>
