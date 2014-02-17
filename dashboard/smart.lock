@@ -3,13 +3,13 @@
   "dependencies": {
     "basePackages": {
       "collection-api-jsonp": {
-        "path": "../custom-packages/collection-api-jsonp"
+        "path": ".custom-packages/collection-api-jsonp"
       },
       "bootstrap-3": {}
     },
     "packages": {
       "collection-api-jsonp": {
-        "path": "../custom-packages/collection-api-jsonp"
+        "path": ".custom-packages/collection-api-jsonp"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
