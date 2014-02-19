@@ -5,10 +5,10 @@
 
 standard-app-packages
 autopublish
-insecure
 preserve-inputs
 accounts-ui
 accounts-twitter
 jquery
+http-methods
+handlebars-server
 bootstrap-3
-collection-api-jsonp

@@ -28,6 +28,7 @@
   <div class="container" id="main">
     {{#if currentUser}}
       {{> bookmarklets}}
+      {{> masterCode}}
     {{/if}}
     {{#unless currentUser}}
       {{> login}}
@@ -92,6 +93,24 @@
             <button type="submit" id="dialog-save" class="btn btn-primary">Save and close</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="masterCode">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapseOne">
+          Master Bookmarklet Code
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <p>Add this code to your browser.</p>
+        <textarea readonly rows="5" class="form-control readonly">{{code}}</textarea>
       </div>
     </div>
   </div>

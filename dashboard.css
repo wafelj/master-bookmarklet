@@ -1,4 +1,3 @@
-/* CSS declarations go here */
 #login-buttons {
   padding: 3px 0;
 }
@@ -11,11 +10,15 @@
   height: 50px;
   width: 50px;
   background-size: cover;
-  background-image: ;
 }
 
 .list-group-item.add {
   text-align: center;
   font-size: 2em;
   font-weight: 400;
+}
+
+#main textarea.readonly {
+	background-color: #fefefe;
+	cursor: auto;
 }

@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="{{styleUrl}}">
+
+<div id="mb-container">
+  <div id="mb-header">
+    <span id="mb-header-title">Master Bookmarklet</span>
+    <a href="#" id="mb-close" onclick="document.body.removeChild(document.getElementById('mb-container'));">Close</a>
+  </div>
+  <div id="mb-content">
+  {{#each items}}
+    <div class="mb-item" onclick="{{code}}" data-id="{{_id}}" style="background-image: url({{thumbnailUrl}});">
+      <div class="mb-item-overlay">
+        <div class="mb-item-name">{{name}}</div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</div>
