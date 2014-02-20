@@ -7,7 +7,7 @@
   </div>
   <div id="mb-content">
   {{#each items}}
-    <div class="mb-item" onclick="{{code}}" data-id="{{_id}}" style="background-image: url({{thumbnailUrl}});">
+    <div class="mb-item" onclick="document.body.removeChild(document.getElementById('mb-container'));setTimeout(function()&#123;{{code}}&#125;,10); " style="background-image: url({{thumbnailUrl}});">
       <div class="mb-item-overlay">
         <div class="mb-item-name">{{name}}</div>
       </div>

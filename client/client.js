@@ -47,5 +47,5 @@ Template.dialog.events({
 }); 
 
 Template.masterCode.code = function() {
-  return '!function(){var e=new XMLHttpRequest;e.onreadystatechange=function(){4===e.readyState&&200===e.status&&document.body.insertAdjacentHTML("beforeend",e.responseText)},e.open("GET","' + Meteor.absoluteUrl() + 'widget?id=' + Meteor.userId() + '"),e.send()}();';
+  return 'javascript:!function(){if(document.getElementById("mb-container"))return;var e=new XMLHttpRequest;e.onreadystatechange=function(){4===e.readyState&&200===e.status&&document.body.insertAdjacentHTML("beforeend",e.responseText)},e.open("GET","' + Meteor.absoluteUrl().replace(/https?:/, '') + 'widget?id=' + Meteor.userId() + '"),e.send()}();';
 }

@@ -8,6 +8,7 @@
   -webkit-box-shadow: 1px 1px 3px #333;
   -moz-box-shadow: 1px 1px 3px #333;
   box-shadow: 1px 1px 3px #333;
+  text-align: center;
 }
 #mb-container #mb-header {
   height: 50px;
@@ -36,7 +37,7 @@
   display: inline-block;
   height: 90px;
   width: 90px;
-  margin: 0 0 10px 10px;
+  margin: 4px;
   background-size: cover;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -44,7 +45,7 @@
   position: relative;
 }
 #mb-container #mb-content .mb-item .mb-item-overlay {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -58,6 +59,6 @@
 }
 #mb-container #mb-content .mb-item .mb-item-overlay .mb-item-name {
   padding: 3px 5px;
-  font-size: 0.9em;
-  font-weight: 200;
+  font-size: 1em;
+  font-weight: 400;
 }

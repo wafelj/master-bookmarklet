@@ -23,7 +23,7 @@ HTTP.methods({
 
     return Handlebars.templates['bookmarklet']({
       items: items, 
-      styleUrl: Meteor.absoluteUrl('bookmarklet.css')
+      styleUrl: Meteor.absoluteUrl('bookmarklet.css').replace(/https?:/, '')
     });
   }
 });
