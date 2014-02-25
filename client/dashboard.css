@@ -22,3 +22,11 @@
 	background-color: #fefefe;
 	cursor: auto;
 }
+
+#dialog textarea[name=code] {
+  display: none;
+}
+
+#dialog #code {
+  height: 200px;
+}

@@ -2,6 +2,7 @@
   "packages": {
     "http-methods": {},
     "handlebars-server": {},
-    "bootstrap-3": {}
+    "bootstrap-3": {},
+    "ace-embed": {}
   }
 }

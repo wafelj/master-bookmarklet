@@ -1,5 +1,9 @@
 Bookmarklets = new Meteor.Collection('bookmarklets');
 
+Meteor.publish('bookmarklets', function () {
+  return Bookmarklets.find({'userId': this.userId});
+});
+
 Meteor.methods({
   upsert: function (id, doc) {
     if(doc.userId === Meteor.userId() && doc.name && doc.code) {

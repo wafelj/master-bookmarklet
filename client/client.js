@@ -1,7 +1,10 @@
 Bookmarklets = new Meteor.Collection('bookmarklets');
+Meteor.subscribe('bookmarklets');
+
+var editor, textarea;
 
 Template.bookmarklets.items = function () {
-  return Bookmarklets.find({'userId': Meteor.userId()});
+  return Bookmarklets.find({});
 };
 
 Template.bookmarklets.events({
@@ -15,8 +18,24 @@ Template.dialog.item = function() {
   return Bookmarklets.findOne(Session.get('currentId'));
 };
 
+Template.dialog.rendered = function() {
+  if(!editor) {
+    editor = ace.edit("code");
+    editor.setTheme('ace/theme/chrome');
+    editor.getSession().setMode('ace/mode/javascript');
+  }
+
+  textarea = $('textarea[name="code"]');
+  editor.setValue(textarea.val());
+  editor.on('change', function(){
+    textarea.val(editor.getValue());
+  });
+};
+
 Template.dialog.events({
-  'click button#dialog-save' : function () {
+  'click button#dialog-save' : function (ev) {
+    ev.preventDefault();
+
     // collect form data
     var form = {};
     $.each($('#dialog-form').serializeArray(), function() {
@@ -25,11 +44,11 @@ Template.dialog.events({
 
     if(form.name && form.code) {
       Meteor.call('upsert', form.id, {
-        'userId': Meteor.userId(),
-        'name' : form.name,
-        'description': form.description,
-        'thumbnailUrl': form.thumbnailUrl,
-        'code' : form.code,
+        userId: Meteor.userId(),
+        name : form.name,
+        description: form.description,
+        thumbnailUrl: form.thumbnailUrl,
+        code : form.code,
       });
 
       $('#dialog').modal('hide');
